@@ -1,0 +1,37 @@
+Tout ce que vous devez savoir pour passer de la formation d’un modèle d’apprentissage automatique à son déploiement comme un pro, à l’aide de FastAPI et de Docker:
+
+Nous allons créer :
+
+- Un modèle ML simple pour prédire les espèces de fleurs d'iris
+- Un service Web FastAPI qui l'expose en tant qu'API REST
+- Une application Dockerisée prête à être déployée n'importe où
+
+Étape 1 : 🏗️ Entraîner un modèle ML simple
+Utilisons l’ensemble de données Iris classique et formons un modèle de régression logistique.
+✅ Cela enregistre votre modèle entraîné dans un fichier nommé iris_model.pkl.
+
+Étape 2 : ⚡ Servir avec FastAPI
+FastAPI est un framework Web Python moderne et rapide pour la création d'API.
+pip install fastapi uvicorn scikit-learn pydantic
+
+Créez votre fichier API :
+✅ Vous pouvez tester cela localement en utilisant :
+application uvicorn : app --reload
+
+Étape 3 : 🐳 Dockeriser l'application
+Docker vous aide à créer des conteneurs légers et portables pour votre application.
+
+Créer un Dockerfile:
+Construire et exécuter :
+# Créer une image
+ docker build -t iris-fastapi .
+# Exécuter le conteneur
+ docker run -p 8000:80 iris-fastapi
+ 
+ ✅ Votre modèle s'exécute désormais dans un conteneur Docker ! Essayez-le :
+http://localhost:8000/docs
+
+🎁 Bonus : Testez-le aveccurl
+curl -X POST "http://localhost:8000/predict" \ 
+  -H "Content-Type: application/json" \ 
+  -d '{ "sepal_length" : 5.1, "sepal_width" : 3.5, "petal_length" : 1.4, "petal_width" : 0.2}'

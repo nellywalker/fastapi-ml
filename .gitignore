@@ -1,0 +1,11 @@
+# Fichiers Python compilés
+__pycache__/
+*.py[cod]
+
+# Environnement virtuel
+venv/
+.env
+*.env
+
+# Pytest
+.pytest_cache/
